@@ -37,6 +37,14 @@ Chart.defaults.font.family = 'Manrope, system-ui, sans-serif';
 Chart.defaults.font.size = 11;
 Chart.defaults.color = '#8a93a3';
 
+// Keep Chart.defaults.color in sync with dark/light theme toggle.
+const syncChartDefaultColor = () => {
+  const light = document.documentElement.getAttribute('data-theme') === 'light';
+  Chart.defaults.color = light ? '#555f6e' : '#8a93a3';
+};
+const _obs = new MutationObserver(syncChartDefaultColor);
+_obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
 export const CHART_COLORS = {
   saffron: '#e8b84e',
   saffronDeep: '#c9962a',

@@ -1,13 +1,14 @@
 // Daily revenue + VAT trend (line chart, two series).
-// Revenue is filled saffron; VAT is a dashed emerald overlay.
 
 import { useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import { aggregateByDate } from '../../lib/compute.js';
-import { CHART_COLORS as C } from '../../lib/chartConfig.js';
+import { useThemeColors } from '../../lib/useThemeColors.js';
 import { fmtN, fmtNI } from '../../lib/format.js';
 
 export default function TrendChart({ rows }) {
+  const C = useThemeColors();
+
   const { data, options } = useMemo(() => {
     const agg = aggregateByDate(rows);
     const labels = agg.map((d) =>
@@ -21,12 +22,12 @@ export default function TrendChart({ rows }) {
             label: 'Revenue (net)',
             data: agg.map((d) => d.revenue),
             borderColor: C.saffron,
-            backgroundColor: 'rgba(232,184,78,0.12)',
+            backgroundColor: C.saffron + '22',
             fill: true,
             tension: 0.35,
             pointRadius: 0,
             pointHoverRadius: 5,
-            borderWidth: 2,
+            borderWidth: 2.5,
           },
           {
             label: 'VAT collected',
@@ -53,8 +54,8 @@ export default function TrendChart({ rows }) {
             backgroundColor: C.ink,
             borderColor: C.saffron,
             borderWidth: 1,
-            titleColor: C.bone,
-            bodyColor: C.bone,
+            titleColor: C.tooltipTitle,
+            bodyColor: C.tooltipBody,
             padding: 12,
             callbacks: { label: (c) => ` ${c.dataset.label}: ₦${fmtN(c.parsed.y)}` },
           },
@@ -68,7 +69,8 @@ export default function TrendChart({ rows }) {
         },
       },
     };
-  }, [rows]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rows, C]);
 
   return <Line data={data} options={options} />;
 }

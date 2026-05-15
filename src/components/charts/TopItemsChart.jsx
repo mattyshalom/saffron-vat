@@ -3,19 +3,26 @@
 import { useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { aggregateByItem } from '../../lib/compute.js';
-import { CHART_COLORS as C } from '../../lib/chartConfig.js';
+import { useThemeColors } from '../../lib/useThemeColors.js';
 import { fmtN, fmtNI } from '../../lib/format.js';
 
 export default function TopItemsChart({ rows }) {
+  const C = useThemeColors();
+
   const { data, options } = useMemo(() => {
     const top = aggregateByItem(rows).slice(0, 7);
+    // Gradient of saffron shades from darkest to lightest
+    const shades = top.map((_, i) => {
+      const opacity = 1 - i * 0.1;
+      return C.saffron + Math.round(opacity * 255).toString(16).padStart(2, '0');
+    });
     return {
       data: {
         labels: top.map((t) => t.name),
         datasets: [
           {
             data: top.map((t) => t.revenue),
-            backgroundColor: C.saffron,
+            backgroundColor: shades,
             borderRadius: 4,
             barThickness: 'flex',
             maxBarThickness: 26,
@@ -32,6 +39,8 @@ export default function TopItemsChart({ rows }) {
             backgroundColor: C.ink,
             borderColor: C.saffron,
             borderWidth: 1,
+            titleColor: C.tooltipTitle,
+            bodyColor: C.tooltipBody,
             callbacks: { label: (c) => ` ₦${fmtN(c.parsed.x)} revenue` },
           },
         },
@@ -44,7 +53,8 @@ export default function TopItemsChart({ rows }) {
         },
       },
     };
-  }, [rows]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rows, C]);
 
   return <Bar data={data} options={options} />;
 }

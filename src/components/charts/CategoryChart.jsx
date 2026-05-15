@@ -4,10 +4,12 @@
 import { useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { aggregateByCategory } from '../../lib/compute.js';
-import { CHART_COLORS as C } from '../../lib/chartConfig.js';
+import { useThemeColors } from '../../lib/useThemeColors.js';
 import { fmtN, fmtNI } from '../../lib/format.js';
 
 export default function CategoryChart({ rows }) {
+  const C = useThemeColors();
+
   const { data, options } = useMemo(() => {
     const agg = aggregateByCategory(rows);
     const labels = agg.map((a) => a.key);
@@ -34,6 +36,8 @@ export default function CategoryChart({ rows }) {
             backgroundColor: C.ink,
             borderColor: C.saffron,
             borderWidth: 1,
+            titleColor: C.tooltipTitle,
+            bodyColor: C.tooltipBody,
             callbacks: { label: (c) => ` ₦${fmtN(c.parsed.x)} VAT` },
           },
         },
@@ -46,7 +50,8 @@ export default function CategoryChart({ rows }) {
         },
       },
     };
-  }, [rows]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rows, C]);
 
   return <Bar data={data} options={options} />;
 }
