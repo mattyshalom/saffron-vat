@@ -1,0 +1,48 @@
+Date,Type,Description,Category,Quantity,UnitPrice,VATRate,Counterparty,InvoiceNo
+2026-05-01,Sale,Premium Fibre 100Mbps,Subscription,1,75000,7.5,Acme Logistics Ltd,INV-2605-001
+2026-05-01,Sale,Standard Fibre 50Mbps,Subscription,1,45000,7.5,Bola Adeyemi,INV-2605-002
+2026-05-02,Sale,Business Fibre 200Mbps,Subscription,1,150000,7.5,Zenith Microfinance,INV-2605-003
+2026-05-02,Sale,Router CPE Device,Hardware,2,35000,7.5,Acme Logistics Ltd,INV-2605-004
+2026-05-03,Sale,Premium Fibre 100Mbps,Subscription,1,75000,7.5,Chika Okafor,INV-2605-005
+2026-05-03,Sale,Installation Fee,Service,1,15000,7.5,Chika Okafor,INV-2605-006
+2026-05-04,Sale,Standard Fibre 50Mbps,Subscription,3,45000,7.5,Lagos Co-Working Hub,INV-2605-007
+2026-05-05,Purchase,Office Rent,Operating,1,250000,7.5,Highrise Properties,SUP-001
+2026-05-05,Purchase,Diesel for Generator,Utilities,400,1100,7.5,Total Energies,SUP-002
+2026-05-06,Sale,Premium Fibre 100Mbps,Subscription,2,75000,7.5,Sunrise Hotels,INV-2605-008
+2026-05-06,Sale,Static IP Add-on,Add-on,1,10000,7.5,Sunrise Hotels,INV-2605-009
+2026-05-07,Sale,Business Fibre 200Mbps,Subscription,1,150000,7.5,Lekki Tech Park,INV-2605-010
+2026-05-08,Purchase,Network Switches,Equipment,5,85000,7.5,Cisco Partner NG,SUP-003
+2026-05-08,Sale,Standard Fibre 50Mbps,Subscription,1,45000,7.5,Tunde Bakare,INV-2605-011
+2026-05-09,Sale,Premium Fibre 100Mbps,Subscription,1,75000,7.5,Halal Foods Ltd,INV-2605-012
+2026-05-10,Sale,Router CPE Device,Hardware,1,35000,7.5,Halal Foods Ltd,INV-2605-013
+2026-05-11,Purchase,Staff Training,Services,1,120000,7.5,Andela Talent,SUP-004
+2026-05-12,Sale,Premium Fibre 100Mbps,Subscription,4,75000,7.5,GreenFields Estate,INV-2605-014
+2026-05-12,Sale,Installation Fee,Service,4,15000,7.5,GreenFields Estate,INV-2605-015
+2026-05-13,Sale,Business Fibre 200Mbps,Subscription,1,150000,7.5,FCMB Branch Ikeja,INV-2605-016
+2026-05-14,Sale,Standard Fibre 50Mbps,Subscription,2,45000,7.5,Yaba Tech Hub,INV-2605-017
+2026-05-15,Purchase,Bandwidth Wholesale,Operating,1,800000,7.5,MainOne Cable,SUP-005
+2026-05-15,Sale,Premium Fibre 100Mbps,Subscription,1,75000,7.5,Dr. Adaeze Eze,INV-2605-018
+2026-05-16,Sale,Static IP Add-on,Add-on,2,10000,7.5,Lekki Tech Park,INV-2605-019
+2026-05-17,Sale,Standard Fibre 50Mbps,Subscription,1,45000,7.5,Femi Otedola,INV-2605-020
+2026-05-18,Purchase,Vehicle Fuel,Utilities,200,1100,7.5,Total Energies,SUP-006
+2026-05-18,Sale,Premium Fibre 100Mbps,Subscription,1,75000,7.5,Mariam Aliyu,INV-2605-021
+2026-05-19,Sale,Router CPE Device,Hardware,3,35000,7.5,GreenFields Estate,INV-2605-022
+2026-05-20,Sale,Business Fibre 200Mbps,Subscription,1,150000,7.5,Standard Chartered,INV-2605-023
+2026-05-20,Sale,Installation Fee,Service,1,15000,7.5,Standard Chartered,INV-2605-024
+2026-05-21,Sale,Standard Fibre 50Mbps,Subscription,2,45000,7.5,Surulere Apartments,INV-2605-025
+2026-05-22,Purchase,Office Supplies,Operating,1,45000,7.5,Office Mate NG,SUP-007
+2026-05-22,Sale,Premium Fibre 100Mbps,Subscription,1,75000,7.5,Kunle Soyemi,INV-2605-026
+2026-05-23,Sale,Static IP Add-on,Add-on,1,10000,7.5,FCMB Branch Ikeja,INV-2605-027
+2026-05-24,Sale,Premium Fibre 100Mbps,Subscription,2,75000,7.5,Pearl Schools,INV-2605-028
+2026-05-25,Purchase,Marketing Services,Operating,1,180000,7.5,Brandville Agency,SUP-008
+2026-05-25,Sale,Business Fibre 200Mbps,Subscription,1,150000,7.5,Heritage Hospital,INV-2605-029
+2026-05-26,Sale,Standard Fibre 50Mbps,Subscription,1,45000,7.5,Ngozi Eze,INV-2605-030
+2026-05-27,Sale,Router CPE Device,Hardware,2,35000,7.5,Pearl Schools,INV-2605-031
+2026-05-27,Sale,Installation Fee,Service,2,15000,7.5,Pearl Schools,INV-2605-032
+2026-05-28,Purchase,Internet Backbone,Operating,1,500000,7.5,MainOne Cable,SUP-009
+2026-05-28,Sale,Premium Fibre 100Mbps,Subscription,1,75000,7.5,Kemi Adetiba,INV-2605-033
+2026-05-29,Sale,Standard Fibre 50Mbps,Subscription,4,45000,7.5,Ajao Estate Residents,INV-2605-034
+2026-05-30,Sale,Business Fibre 200Mbps,Subscription,1,150000,7.5,Coscharis Motors,INV-2605-035
+2026-05-30,Sale,Static IP Add-on,Add-on,1,10000,7.5,Coscharis Motors,INV-2605-036
+2026-05-31,Sale,Premium Fibre 100Mbps,Subscription,1,75000,7.5,Bisi Adewunmi,INV-2605-037
+2026-05-31,Purchase,Tower Lease,Operating,1,150000,7.5,Helios Towers,SUP-010

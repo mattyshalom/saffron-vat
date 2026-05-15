@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Base ---------- */
+html,
+body {
+  background: #0d1117;
+  color: #f4ede1;
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(232, 184, 78, 0.06), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(91, 140, 184, 0.04), transparent 60%),
+    #0d1117;
+  background-attachment: fixed;
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #1c2530;
+  border: 1px solid #e8b84e;
+  color: #f4ede1;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.25s ease;
+  z-index: 1000;
+}
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ---------- Print styles ---------- */
+@media print {
+  body {
+    background: white !important;
+    color: #111 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-card {
+    background: white !important;
+    border-color: #e0e0e0 !important;
+    color: #111 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .print-text {
+    color: #111 !important;
+  }
+  .print-muted {
+    color: #666 !important;
+  }
+  .print-accent {
+    color: #c9962a !important;
+  }
+  .print-th {
+    background: #f5f5f5 !important;
+    color: #666 !important;
+    border-color: #ddd !important;
+  }
+  .print-td {
+    color: #222 !important;
+    border-color: #eee !important;
+  }
+  .print-total {
+    background: #fdf6e3 !important;
+  }
+}
+
+/* ---------- Sortable table headers ---------- */
+.sort-th.sorted::after {
+  content: '↓';
+  margin-left: 6px;
+  color: #e8b84e;
+}
+.sort-th.sorted.asc::after {
+  content: '↑';
+}
+
+/* ---------- Form inputs (custom because Tailwind reset removes browser styles) ---------- */
+.input-base {
+  background: #1c2530;
+  border: 1px solid #2a3340;
+  color: #f4ede1;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  transition: border-color 0.15s;
+}
+.input-base:focus {
+  outline: none;
+  border-color: #e8b84e;
+  box-shadow: 0 0 0 3px rgba(232, 184, 78, 0.12);
+}
