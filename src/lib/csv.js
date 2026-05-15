@@ -15,6 +15,11 @@ const pick = (raw, candidates) => {
   return '';
 };
 
+const flag = (raw, candidates) => {
+  const v = String(pick(raw, candidates) || '').trim().toUpperCase();
+  return v === 'Y' || v === 'YES' || v === '1';
+};
+
 /** Convert a raw CSV row into a normalized transaction object, or null if invalid. */
 const normalizeRow = (raw) => {
   const date = pick(raw, ['Date', 'TransactionDate', 'TxnDate']);
@@ -26,15 +31,20 @@ const normalizeRow = (raw) => {
   const qty = parseFloat(pick(raw, ['Quantity', 'Qty'])) || 1;
   const unitPrice =
     parseFloat(String(pick(raw, ['UnitPrice', 'Price', 'Amount']) || '0').replace(/,/g, '')) || 0;
+
+  const vatExempt = flag(raw, ['VATExempt', 'Exempt', 'ZeroRated', 'VatExempt']);
   const rateRaw = parseFloat(pick(raw, ['VATRate', 'VAT', 'Rate']));
-  const vatRate = isNaN(rateRaw) ? 7.5 : rateRaw;
+  const vatRate = vatExempt ? 0 : isNaN(rateRaw) ? 7.5 : rateRaw;
 
   const net = qty * unitPrice;
   const vat = net * (vatRate / 100);
   const gross = net + vat;
 
-  const withheldRaw = String(pick(raw, ['VATWithheld', 'VatWithheld', 'WHTVat', 'WithheldVAT']) || '').trim().toUpperCase();
-  const vatWithheld = withheldRaw === 'Y' || withheldRaw === 'YES' || withheldRaw === '1';
+  const vatWithheld = flag(raw, ['VATWithheld', 'VatWithheld', 'WHTVat', 'WithheldVAT']);
+
+  const whtRateRaw = parseFloat(pick(raw, ['WHTRate', 'WHT', 'WithholdingTax', 'WHTax']));
+  const whtRate = isNaN(whtRateRaw) ? 0 : whtRateRaw;
+  const whtAmount = net * (whtRate / 100);
 
   return {
     date,
@@ -44,7 +54,10 @@ const normalizeRow = (raw) => {
     qty,
     unitPrice,
     vatRate,
+    vatExempt,
     vatWithheld,
+    whtRate,
+    whtAmount,
     counterparty: pick(raw, ['Counterparty', 'Customer', 'Supplier', 'Vendor']) || '—',
     invoiceNo: pick(raw, ['InvoiceNo', 'Invoice', 'InvoiceNumber', 'Ref']) || '—',
     net,

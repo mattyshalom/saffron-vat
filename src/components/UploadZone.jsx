@@ -98,6 +98,8 @@ export default function UploadZone({ onFile, onLoadSample }) {
             { name: 'Counterparty', required: true },
             { name: 'InvoiceNo', required: true },
             { name: 'VATWithheld', required: false },
+            { name: 'VATExempt', required: false },
+            { name: 'WHTRate', required: false },
           ].map((col, i, arr) => (
             <span key={col.name}>
               <span className={col.required ? 'text-saffron font-medium' : 'text-muted-2 font-normal'}>
@@ -106,7 +108,7 @@ export default function UploadZone({ onFile, onLoadSample }) {
               {i < arr.length - 1 && ','}
             </span>
           ))}
-          <span className="ml-3 text-[10.5px] text-muted-2 not-italic">(VATWithheld optional — Y/N)</span>
+          <span className="ml-3 text-[10.5px] text-muted-2 not-italic">(last 3 optional)</span>
         </div>
       </div>
     </section>
