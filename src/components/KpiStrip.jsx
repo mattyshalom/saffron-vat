@@ -20,7 +20,7 @@ const Kpi = ({ label, value, sub, feature = false, valueColor, prevValue, lowerI
   return (
     <div
       className={'p-7 px-6 transition-colors duration-200 ' + (feature ? 'kpi-feature' : 'bg-ink-2 hover:bg-ink-3')}
-      style={feature ? { background: 'linear-gradient(135deg, rgba(232,184,78,0.08), transparent), var(--ink-2)' } : {}}
+      style={feature ? { background: 'linear-gradient(135deg, rgb(var(--saffron-rgb) / 0.08), transparent), rgb(var(--ink-2-rgb))' } : {}}
     >
       <div className={`text-[11px] tracking-[0.14em] uppercase font-medium mb-3.5 ${resolvedLabelColor}`}>
         {label}

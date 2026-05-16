@@ -2,93 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ---------- Theme tokens ---------- */
+/* ---------- Dark theme (default) — RGB channel vars ---------- */
 :root {
-  --ink:        #0d1117;
-  --ink-2:      #141b24;
-  --ink-3:      #1c2530;
-  --line:       #2a3340;
-  --line-soft:  #1f2731;
-  --bone:       #f4ede1;
-  --bone-2:     #e8dfcd;
-  --muted:      #8a93a3;
-  --muted-2:    #5e6776;
-  --saffron:    #e8b84e;
-  --saffron-deep:#c9962a;
-  --sage:       #5fa074;
-  --brick:      #c45c4a;
+  --ink-rgb:          13 17 23;
+  --ink-2-rgb:        20 27 36;
+  --ink-3-rgb:        28 37 48;
+  --line-rgb:         42 51 64;
+  --line-soft-rgb:    31 39 49;
+  --bone-rgb:         244 237 225;
+  --bone-2-rgb:       232 223 205;
+  --muted-rgb:        138 147 163;
+  --muted-2-rgb:      94 103 118;
+  --saffron-rgb:      232 184 78;
+  --saffron-deep-rgb: 201 150 42;
+  --sage-rgb:         95 160 116;
+  --brick-rgb:        196 92 74;
+
+  /* Convenience hex vars for inline styles & gradients */
+  --saffron-hex:      #e8b84e;
+  --saffron-deep-hex: #c9962a;
+  --ink-2-hex:        #141b24;
+  --ink-hex:          #0d1117;
 }
 
+/* ---------- Light theme ---------- */
 [data-theme='light'] {
-  --ink:        #f5f0e8;
-  --ink-2:      #ffffff;
-  --ink-3:      #f0ebe0;
-  --line:       #d8d0c0;
-  --line-soft:  #e8e0d0;
-  --bone:       #1a1a1a;
-  --bone-2:     #333333;
-  --muted:      #6b7280;
-  --muted-2:    #9ca3af;
-  --saffron:    #b8860b;
-  --saffron-deep:#8b6508;
-  --sage:       #2d7a4f;
-  --brick:      #c45c4a;
+  --ink-rgb:          245 240 232;
+  --ink-2-rgb:        255 255 255;
+  --ink-3-rgb:        240 235 224;
+  --line-rgb:         216 208 192;
+  --line-soft-rgb:    232 224 208;
+  --bone-rgb:         26 26 26;
+  --bone-2-rgb:       51 51 51;
+  --muted-rgb:        107 114 128;
+  --muted-2-rgb:      156 163 175;
+  --saffron-rgb:      176 106 0;
+  --saffron-deep-rgb: 139 82 0;
+  --sage-rgb:         26 122 64;
+  --brick-rgb:        196 92 74;
+
+  --saffron-hex:      #b06a00;
+  --saffron-deep-hex: #8b5200;
+  --ink-2-hex:        #ffffff;
+  --ink-hex:          #f5f0e8;
 }
 
 /* ---------- Base ---------- */
 html, body {
-  background: var(--ink);
-  color: var(--bone);
+  background-color: rgb(var(--ink-rgb));
+  color: rgb(var(--bone-rgb));
   font-family: 'Manrope', system-ui, sans-serif;
   font-weight: 400;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  transition: background 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 body {
   min-height: 100vh;
   background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(232,184,78,0.06), transparent 60%),
-    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(91,140,184,0.04), transparent 60%),
-    var(--ink);
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgb(var(--saffron-rgb) / 0.06), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgb(42 91 140 / 0.04), transparent 60%),
+    rgb(var(--ink-rgb));
   background-attachment: fixed;
 }
-
-[data-theme='light'] body {
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(184,134,11,0.06), transparent 60%),
-    var(--ink);
-}
-
-/* ---------- Tailwind bg/border/text mappings to CSS vars ---------- */
-.bg-ink-2  { background-color: var(--ink-2) !important; }
-.bg-ink-3  { background-color: var(--ink-3) !important; }
-.border-line-soft { border-color: var(--line-soft) !important; }
-.border-line      { border-color: var(--line) !important; }
-.text-bone        { color: var(--bone) !important; }
-.text-bone-2      { color: var(--bone-2) !important; }
-.text-muted       { color: var(--muted) !important; }
-.text-muted-2     { color: var(--muted-2) !important; }
-.text-saffron     { color: var(--saffron) !important; }
-.text-sage        { color: var(--sage) !important; }
-.text-brick       { color: var(--brick) !important; }
-.bg-saffron       { background-color: var(--saffron) !important; }
-.border-saffron   { border-color: var(--saffron) !important; }
-.text-ink         { color: var(--ink) !important; }
 
 /* ---------- Toast ---------- */
 .toast {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: var(--ink-3);
-  border: 1px solid var(--saffron);
-  color: var(--bone);
+  background: rgb(var(--ink-3-rgb));
+  border: 1px solid rgb(var(--saffron-rgb));
+  color: rgb(var(--bone-rgb));
   padding: 14px 20px;
   border-radius: 8px;
   font-size: 13px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 28px rgb(0 0 0 / 0.4);
   transform: translateY(100px);
   opacity: 0;
   transition: all 0.25s ease;
@@ -99,24 +89,25 @@ body {
 /* ---------- Print styles ---------- */
 @media print {
   :root {
-    --ink: white;
-    --ink-2: white;
-    --ink-3: #f5f5f5;
-    --bone: #111;
-    --bone-2: #222;
-    --muted: #666;
-    --muted-2: #888;
-    --saffron: #c9962a;
-    --line-soft: #e0e0e0;
-    --line: #ccc;
-    --sage: #2d7a4f;
-    --brick: #c45c4a;
+    --ink-rgb:       255 255 255;
+    --ink-2-rgb:     255 255 255;
+    --ink-3-rgb:     245 245 245;
+    --bone-rgb:      17 17 17;
+    --bone-2-rgb:    34 34 34;
+    --muted-rgb:     102 102 102;
+    --muted-2-rgb:   136 136 136;
+    --saffron-rgb:   201 150 42;
+    --line-soft-rgb: 224 224 224;
+    --line-rgb:      204 204 204;
+    --sage-rgb:      45 122 79;
+    --brick-rgb:     196 92 74;
+    --ink-2-hex:     #ffffff;
+    --saffron-hex:   #c9962a;
   }
   body { background: white !important; color: #111 !important; }
   .no-print { display: none !important; }
   .print-card { break-inside: avoid; page-break-inside: avoid; }
 
-  /* PDF cover page */
   #pdf-cover {
     display: flex !important;
     flex-direction: column;
@@ -132,14 +123,14 @@ body {
 #pdf-cover { display: none; }
 
 /* ---------- Sortable table headers ---------- */
-.sort-th.sorted::after       { content: '↓'; margin-left: 6px; color: var(--saffron); }
-.sort-th.sorted.asc::after   { content: '↑'; }
+.sort-th.sorted::after     { content: '↓'; margin-left: 6px; color: rgb(var(--saffron-rgb)); }
+.sort-th.sorted.asc::after { content: '↑'; }
 
 /* ---------- Form inputs ---------- */
 .input-base {
-  background: var(--ink-3);
-  border: 1px solid var(--line);
-  color: var(--bone);
+  background: rgb(var(--ink-3-rgb));
+  border: 1px solid rgb(var(--line-rgb));
+  color: rgb(var(--bone-rgb));
   padding: 8px 14px;
   border-radius: 8px;
   font-family: inherit;
@@ -148,6 +139,12 @@ body {
 }
 .input-base:focus {
   outline: none;
-  border-color: var(--saffron);
-  box-shadow: 0 0 0 3px rgba(232,184,78,0.12);
+  border-color: rgb(var(--saffron-rgb));
+  box-shadow: 0 0 0 3px rgb(var(--saffron-rgb) / 0.12);
+}
+
+/* select element needs explicit option styling in some browsers */
+.input-base option {
+  background: rgb(var(--ink-3-rgb));
+  color: rgb(var(--bone-rgb));
 }

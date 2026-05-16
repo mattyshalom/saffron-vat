@@ -4,25 +4,43 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: { DEFAULT: '#0d1117', 2: '#141b24', 3: '#1c2530' },
-        line: { DEFAULT: '#2a3340', soft: '#1f2731' },
-        bone: { DEFAULT: '#f4ede1', 2: '#e8dfcd' },
-        muted: { DEFAULT: '#8a93a3', 2: '#5e6776' },
-        saffron: { DEFAULT: '#e8b84e', deep: '#c9962a' },
-        sage: '#5fa074',
-        brick: '#c45c4a',
+        // All custom colors use CSS RGB channel vars so opacity modifiers (bg-saffron/10)
+        // and hover states work correctly in both dark and light theme.
+        ink: {
+          DEFAULT: 'rgb(var(--ink-rgb) / <alpha-value>)',
+          2: 'rgb(var(--ink-2-rgb) / <alpha-value>)',
+          3: 'rgb(var(--ink-3-rgb) / <alpha-value>)',
+        },
+        line: {
+          DEFAULT: 'rgb(var(--line-rgb) / <alpha-value>)',
+          soft: 'rgb(var(--line-soft-rgb) / <alpha-value>)',
+        },
+        bone: {
+          DEFAULT: 'rgb(var(--bone-rgb) / <alpha-value>)',
+          2: 'rgb(var(--bone-2-rgb) / <alpha-value>)',
+        },
+        muted: {
+          DEFAULT: 'rgb(var(--muted-rgb) / <alpha-value>)',
+          2: 'rgb(var(--muted-2-rgb) / <alpha-value>)',
+        },
+        saffron: {
+          DEFAULT: 'rgb(var(--saffron-rgb) / <alpha-value>)',
+          deep: 'rgb(var(--saffron-deep-rgb) / <alpha-value>)',
+        },
+        sage:  'rgb(var(--sage-rgb) / <alpha-value>)',
+        brick: 'rgb(var(--brick-rgb) / <alpha-value>)',
       },
       fontFamily: {
         display: ['Fraunces', 'serif'],
-        sans: ['Manrope', 'system-ui', 'sans-serif'],
-        mono: ['"IBM Plex Mono"', 'monospace'],
+        sans:    ['Manrope', 'system-ui', 'sans-serif'],
+        mono:    ['"IBM Plex Mono"', 'monospace'],
       },
       boxShadow: {
-        saffron: '0 4px 20px rgba(232, 184, 78, 0.18)',
+        saffron: '0 4px 20px rgb(var(--saffron-rgb) / 0.18)',
       },
       keyframes: {
         fadeUp: {
-          '0%': { opacity: 0, transform: 'translateY(10px)' },
+          '0%':   { opacity: 0, transform: 'translateY(10px)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
         },
       },

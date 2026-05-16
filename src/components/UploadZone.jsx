@@ -36,10 +36,10 @@ export default function UploadZone({ onFile, onLoadSample }) {
             ? 'border-saffron bg-saffron/[0.08] scale-[1.005]'
             : 'border-line hover:border-saffron hover:bg-saffron/[0.04]')
         }
-        style={{ background: 'linear-gradient(180deg, rgba(232,184,78,0.02), transparent)' }}
+        style={{ background: 'linear-gradient(180deg, rgb(var(--saffron-rgb) / 0.02), transparent)' }}
       >
         <div className="w-14 h-14 rounded-full mx-auto mb-[18px] grid place-items-center"
-             style={{ background: 'rgba(232,184,78,0.1)', border: '1px solid rgba(232,184,78,0.3)' }}>
+             style={{ background: 'rgb(var(--saffron-rgb) / 0.1)', border: '1px solid rgb(var(--saffron-rgb) / 0.3)' }}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-[22px] h-[22px] text-saffron">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
             <polyline points="17 8 12 3 7 8" />

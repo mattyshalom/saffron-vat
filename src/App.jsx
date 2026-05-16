@@ -182,7 +182,7 @@ export default function App() {
 
       {hasData && summary && (
         <section>
-          <Ribbon count={activeRows.length} period={summary.period} />
+          <Ribbon count={activeRows.length} period={summary.period} rateLabel={summary.rateLabel} />
           <KpiStrip summary={summary} prevSummary={prevSummary} />
 
           <SectionTitle title="The shape of the month" sub="Trends & Composition" />

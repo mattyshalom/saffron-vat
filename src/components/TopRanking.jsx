@@ -34,7 +34,7 @@ export default function TopRanking({ rows }) {
                   className="h-full rounded-[3px] transition-all duration-700 ease-out"
                   style={{
                     width: `${pct}%`,
-                    background: 'linear-gradient(90deg, #e8b84e, #c9962a)',
+                    background: 'linear-gradient(90deg, rgb(var(--saffron-rgb)), rgb(var(--saffron-deep-rgb)))',
                   }}
                 />
               </div>

@@ -15,9 +15,9 @@ const Row = ({ label, sub, value, total = false, deduction = false }) => (
     }
     style={
       total
-        ? { background: 'linear-gradient(90deg, rgba(232,184,78,0.06), transparent)' }
+        ? { background: 'linear-gradient(90deg, rgb(var(--saffron-rgb) / 0.06), transparent)' }
         : deduction
-          ? { background: 'rgba(232,184,78,0.04)' }
+          ? { background: 'rgb(var(--saffron-rgb) / 0.05)' }
           : {}
     }
   >
@@ -51,7 +51,7 @@ export default function ReturnSummary({ summary }) {
   return (
     <div
       className="border border-line-soft rounded-[14px] overflow-hidden animate-fadeUp print-card"
-      style={{ background: 'linear-gradient(180deg, rgba(232,184,78,0.04), transparent), #141b24' }}
+      style={{ background: 'linear-gradient(180deg, rgb(var(--saffron-rgb) / 0.04), transparent), rgb(var(--ink-2-rgb))' }}
     >
       <div className="px-7 py-6 border-b border-line-soft flex justify-between items-start">
         <div>
@@ -73,6 +73,14 @@ export default function ReturnSummary({ summary }) {
           sub="Net amount of VAT-able sales"
           value={`₦${fmtN(summary.taxableSales)}`}
         />
+        {summary.exemptSales > 0 && (
+          <Row
+            label="VAT-exempt / zero-rated sales"
+            sub="Excluded from output VAT (exports, basic commodities)"
+            value={`₦${fmtN(summary.exemptSales)}`}
+            deduction
+          />
+        )}
         <Row
           label="Output VAT charged"
           sub={`VAT collected from customers (${summary.rateLabel})`}
@@ -111,6 +119,20 @@ export default function ReturnSummary({ summary }) {
           sub="Distinct purchase entries this period"
           value={summary.purch.length}
         />
+        {(summary.whtOnSales > 0 || summary.whtOnPurchases > 0) && (
+          <>
+            <Row
+              label="WHT withheld from your income by customers"
+              sub="Customers deducted this from your invoice payments"
+              value={summary.whtOnSales > 0 ? `₦${fmtN(summary.whtOnSales)}` : '—'}
+            />
+            <Row
+              label="WHT you withheld from suppliers"
+              sub="You must remit this to FIRS on behalf of your suppliers"
+              value={summary.whtOnPurchases > 0 ? `₦${fmtN(summary.whtOnPurchases)}` : '—'}
+            />
+          </>
+        )}
         <Row label="Net VAT payable to FIRS" value={`₦${fmtN(summary.netVat)}`} total />
 
         <p className="mt-[18px] text-xs text-muted leading-relaxed print-muted">

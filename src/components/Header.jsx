@@ -61,7 +61,7 @@ export default function Header({ period, onLoadSample, onExportCSV, onPrint }) {
     <header className="flex items-center justify-between pb-7 border-b border-line-soft mb-9 max-md:flex-col max-md:items-start max-md:gap-4 no-print">
       <div className="flex items-baseline gap-3.5">
         <div className="w-10 h-10 rounded-lg relative overflow-hidden shadow-saffron"
-             style={{ background: 'linear-gradient(135deg, var(--saffron) 0%, var(--saffron-deep) 100%)' }}>
+             style={{ background: 'linear-gradient(135deg, rgb(var(--saffron-rgb)) 0%, rgb(var(--saffron-deep-rgb)) 100%)' }}>
           <span className="absolute inset-0 grid place-items-center font-display font-bold text-[22px] text-ink">₦</span>
         </div>
         <div>

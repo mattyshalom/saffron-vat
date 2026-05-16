@@ -93,7 +93,7 @@ export default function TaxProMaxChecklist({ summary, rows }) {
   return (
     <div
       className="border border-line-soft rounded-[14px] overflow-hidden animate-fadeUp print-card"
-      style={{ background: 'linear-gradient(180deg, rgba(232,184,78,0.03), transparent), var(--ink-2, #141b24)' }}
+      style={{ background: 'linear-gradient(180deg, rgb(var(--saffron-rgb) / 0.03), transparent), rgb(var(--ink-2-rgb))' }}
     >
       <div className="px-7 py-5 border-b border-line-soft flex items-center justify-between">
         <div>

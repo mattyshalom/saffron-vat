@@ -7,7 +7,7 @@ const Chip = ({ label, value }) => (
   </span>
 );
 
-export default function Ribbon({ count, period }) {
+export default function Ribbon({ count, period, rateLabel }) {
   const generated = new Date().toLocaleDateString('en-NG', {
     day: 'numeric',
     month: 'short',
@@ -16,7 +16,7 @@ export default function Ribbon({ count, period }) {
 
   return (
     <div className="flex gap-2 flex-wrap mb-5 animate-fadeUp">
-      <Chip label="Filed under" value="FIRS · 7.5% Standard Rate" />
+      <Chip label="FIRS VAT" value={`${rateLabel || '7.5%'} rate(s) in use`} />
       <Chip label="Transactions" value={count} />
       <Chip label="Period" value={period} />
       <Chip label="Generated" value={generated} />
